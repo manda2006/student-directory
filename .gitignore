@@ -1,0 +1,6 @@
+.venv/
+.env/
+app/__pycache__
+frontend/react_with_flask/dist
+frontend/react_with_flask/node_modules
+frontend/react_with_flask/public

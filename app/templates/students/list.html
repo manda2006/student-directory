@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Liste des étudiants</title>
+</head>
+<body>
+    <a href="{{ url_for('add_student') }}">Ajouter un étudiant</a>
+    <h1>Liste des étudiants</h1>
+    <ul>
+        {% for student in students %}
+        <li><a href="{{ url_for('student_details', student_id=student.id) }}">{{ student.full_name }} ({{ student.id }})</a></li>
+        {% endfor %}
+    </ul>
+    <a href="{{ url_for('add_student') }}">Ajouter un étudiant</a>
+</body>
+</html>

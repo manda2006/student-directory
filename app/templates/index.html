@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Annuaire des étudiants</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Bienvenue dans l'annuaire des étudiants</h1>
+    <p>Ici, vous pourrez :</p>
+    <ul>
+        <li>Voir la liste de tous les étudiants</li>
+        <li>Ajouter un nouvel étudiant</li>
+        <li>Modifier les informations d'un étudiant</li>
+        <li>Supprimer un étudiant</li>
+    </ul>
+    <a href="{{ url_for('list_students') }}">Voir la liste des étudiants</a>
+</body>
+</html>

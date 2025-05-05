@@ -1,0 +1,47 @@
+services:
+  backend:
+    build: .
+    container_name: flask-backend
+    ports:
+      - "5000:5000"
+    depends_on:
+      - mariadb
+    env_file:
+      - .env
+    networks:
+      - backend_net
+
+  frontend:
+    build:
+      context: ./frontend/react_with_flask
+    container_name: react-frontend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+    networks:
+      - backend_net
+
+  mariadb:
+    image: mariadb:10.5
+    container_name: mariadb
+    restart: always
+    env_file:
+      - .env
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${DB_NAME}
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+    volumes:
+      - mariadb_data:/var/lib/mysql
+      - ./mariadb/init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - backend_net
+
+volumes:
+  mariadb_data:
+
+networks:
+  backend_net:
+    driver: bridge
