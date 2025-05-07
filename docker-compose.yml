@@ -6,8 +6,8 @@ services:
       - "5000:5000"
     depends_on:
       - mariadb
-    env_file:
-      - .env
+    #env_file:
+    #  - .env
     networks:
       - backend_net
 
@@ -26,8 +26,8 @@ services:
     image: mariadb:10.5
     container_name: mariadb
     restart: always
-    env_file:
-      - .env
+    #env_file:
+    #  - .env
     environment:
       MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
       MYSQL_DATABASE: ${DB_NAME}
